@@ -1,17 +1,18 @@
-import { generateRandomId } from "../../util/randomId";
-
 export const ExpenseActions = {
-  Add: "ADD_EXPENSE",
-  Update: "UPDATE_EXPENSE",
-  Delete: "DELETE_EXPENSE",
+  ADD_EXPENSE: "ADD_EXPENSE",
+  SET_EXPENSES: "SET_EXPENSES",
+  UPDATE_EXPENSE: "UPDATE_EXPENSE",
+  DELETE_EXPENSE: "DELETE_EXPENSE",
 };
 
 export function ExpensesReducer(state, action) {
   switch (action.type) {
-    case ExpenseActions.Add:
-      const id = generateRandomId();
-      return [{ ...action.payload, id }, ...state];
-    case ExpenseActions.Update:
+    case ExpenseActions.ADD_EXPENSE:
+      return [action.payload, ...state];
+    // set only sets the fetched expenses from backend
+    case ExpenseActions.SET_EXPENSES:
+      return action.payload.reverse();
+    case ExpenseActions.UPDATE_EXPENSE:
       const updatableExpenseIndex = state.findIndex(
         (expense) => expense.id === action.payload.id
       );
@@ -20,7 +21,7 @@ export function ExpensesReducer(state, action) {
       const updatedExpenses = [...state];
       updatedExpenses[updatableExpenseIndex] = updatedItem;
       return updatedExpenses;
-    case ExpenseActions.Delete:
+    case ExpenseActions.DELETE_EXPENSE:
       return state.filter((expense) => expense.id !== action.payload);
     default:
       return state;

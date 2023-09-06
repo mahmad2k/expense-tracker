@@ -1,3 +1,6 @@
+import * as Crypto from "expo-crypto";
+
 export function generateRandomId() {
-  return Date.toString() + Math.random().toString();
+  // (new Date).toString() + Math.random().toString();
+  return Crypto.randomUUID();
 }

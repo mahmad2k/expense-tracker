@@ -1,0 +1,63 @@
+{
+  "api": {
+    "api3b1278b8": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "expensetrackera90cdc4a"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "expensetrackera90cdc4a": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "expensetracker"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_expensetrackera90cdc4a_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "expensetrackera90cdc4a"
+        }
+      ]
+    },
+    "AMPLIFY_function_expensetrackera90cdc4a_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "expensetrackera90cdc4a"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "expensetracker": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}

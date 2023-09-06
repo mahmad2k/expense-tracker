@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/expenses": {
+      "name": "/expenses",
+      "lambdaFunction": "expensetrackera90cdc4a",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

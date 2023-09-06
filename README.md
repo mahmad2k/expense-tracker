@@ -18,5 +18,4 @@
 ```
 - AWS Amplify
   - Backend
-  - Auth
 ```

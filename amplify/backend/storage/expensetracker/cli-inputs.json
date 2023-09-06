@@ -1,0 +1,10 @@
+{
+  "resourceName": "expensetracker",
+  "tableName": "Expense",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

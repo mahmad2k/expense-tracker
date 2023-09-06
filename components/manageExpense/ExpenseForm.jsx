@@ -34,6 +34,7 @@ function ExpenseForm({ defaultValues, submitButtonLabel, onCancel, onSubmit }) {
       amount: Number(inputs.amount.value),
       date: new Date(inputs.date.value),
       description: inputs.description.value,
+      createdAt: defaultValues?.createdAt ?? "",
     };
 
     const isAmountValid = !isNaN(expenseData.amount) && expenseData.amount > 0;
@@ -70,7 +71,7 @@ function ExpenseForm({ defaultValues, submitButtonLabel, onCancel, onSubmit }) {
           style={styles.rowInput}
           invalid={!inputs.amount.isValid}
           textInputConfig={{
-            keyboardType: "decimal-pod",
+            keyboardType: "decimal-pad",
             value: inputs.amount.value,
             onChangeText: inputChangeHandler.bind(this, "amount"),
           }}
